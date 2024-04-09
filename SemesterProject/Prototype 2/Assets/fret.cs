@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,10 +27,13 @@ public class fret : MonoBehaviour
 
     public void setOriginaSprite(Sprite newSprite)
     {
+
         originalSprite = newSprite;
         print(newSprite);
+        //GetComponent<SpriteRenderer>().sprite = originalSprite;
         GetComponent<SpriteRenderer>().sprite = originalSprite;
+
     }
 
-  
+
 }

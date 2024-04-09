@@ -20,6 +20,7 @@ public class staff : MonoBehaviour
 
     public void setOriginalSprite(Sprite newSprite)
     {
+        
         originalSprite = newSprite;
         print(newSprite);
         GetComponent<SpriteRenderer>().sprite = originalSprite;

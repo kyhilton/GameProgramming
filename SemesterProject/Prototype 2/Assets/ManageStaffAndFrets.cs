@@ -1,18 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class ManageStaffAndFrets : MonoBehaviour
 {
+    
     public GameObject staff;
     public GameObject fret;
 
     public string question;
+    public int lastRandom = 0;
 
     private bool noteSelected1;
     private GameObject note;
@@ -21,10 +25,20 @@ public class ManageStaffAndFrets : MonoBehaviour
     private int score = 0;
 
     
+    public List<Sprite> sprites;
 
     // Start is called before the first frame update
     void Start()
     {
+        
+        sprites = new List<Sprite> {
+        Resources.Load<Sprite>("E_1_Staff"),
+        Resources.Load<Sprite>("F_1_Staff"),
+        Resources.Load<Sprite>("G_1_Staff"),
+        Resources.Load<Sprite>("E_1_Fret"),
+        Resources.Load<Sprite>("F_1_Fret"),
+        Resources.Load<Sprite>("G_1_Fret")
+    };
         displayStaff();
         displayFrets();
     }
@@ -54,24 +68,34 @@ public class ManageStaffAndFrets : MonoBehaviour
         string nameOfNote = "";
         string stringNumber = "_1_Staff";
         string fileName = "";
+        int index = 0;
+        int random = randomIntExcept(lastRandom);
 
-        switch (UnityEngine.Random.Range(0, 3))
-        {
-            case 0:
-                nameOfNote = "E";
-                break;
-            case 1:
-                nameOfNote = "F";
-                break;
-            case 2:
-                nameOfNote = "G";
-                break;
-        }
+      
+            lastRandom = random;
+            switch (random)
+            {
+
+                case 0:
+                    nameOfNote = "E";
+                    index = 0;
+                    break;
+                case 1:
+                    nameOfNote = "F";
+                    index = 1;
+                    break;
+                case 2:
+                    nameOfNote = "G";
+                    index = 2;
+                    break;
+            
+           }
         fileName = nameOfNote + stringNumber;
-        Debug.Log(fileName);
-        Sprite s1 = (Sprite)(Resources.Load<Sprite>(fileName));
+        
+        Sprite s1 = sprites[index];
         print("S1" + s1);
-        GameObject.Find("" + rank).GetComponent<staff>().setOriginalSprite(s1);
+        //GameObject.Find("" + rank).GetComponent<staff>().setOriginalSprite(s1);
+        s.GetComponent<staff>().setOriginalSprite(s1);
 
         question = nameOfNote;
     }
@@ -97,24 +121,32 @@ public class ManageStaffAndFrets : MonoBehaviour
         string nameOfNote = "";
         string stringNumber = "_1_Fret";
         string fileName = "";
+        int index = 0;
 
         switch (rank)
         {
             case 1:
                 nameOfNote = "E";
+                index = 3;
                 break;
             case 2:
                 nameOfNote = "F";
+                index = 4;
                 break;
             case 3:
                 nameOfNote = "G";
+                index = 5;
                 break;
         }
         fileName = nameOfNote + stringNumber;
-        
-        Sprite s2 = (Sprite)(Resources.Load<Sprite>(fileName));
+
+        //IMPORT
+        Sprite s2 = sprites[index];
         print("S2" + s2);
-        GameObject.Find("" + rank).GetComponent<fret>().setOriginaSprite(s2);
+        //GameObject.Find("" + rank).GetComponent<fret>().setOriginaSprite(s2);
+        f.GetComponent<fret>().setOriginaSprite(s2);
+
+        /* s2 = (Sprite)Resources.UnloadAsset<Sprite>(fileName);*/
     }
 
     public void noteSelected(GameObject fret)
@@ -160,6 +192,7 @@ public class ManageStaffAndFrets : MonoBehaviour
             noteSelected1 = false;
         }
 
+        //  GENERATE A NEW RANDOM NUMBER TO ASSOCIATE WITH A CORRECT COMBINATION OF STAFF AND FRET, PASS THAT TO THE ADDSTAFF AND ADDFRET. THEN YOU CAN RANDOMLY SELECT TWO OTHER FRETS TO ACT AS THE INCORRECT ANSWERS.
 
 
     }
@@ -180,4 +213,30 @@ public class ManageStaffAndFrets : MonoBehaviour
 
 
     }
+
+    public void levelOver()
+    {
+        //write score to file
+       /* using (var FileWriter = new StreamWriter("score.txt", false))
+        {
+            FileWriter.WriteLine(Convert.ToString(score));
+        }
+        //write score to high scores file
+        using (var StreamWriter = new StreamWriter("score.txt", false))
+        {
+            StreamWriter.WriteLine(Convert.ToString(score) + ", ");
+        }
+        SceneManager.LoadScene("endLevel");*/
+    }
+
+    public int randomIntExcept(int except)
+    {   
+        int number = UnityEngine.Random.Range(0, 3);
+        do
+        {
+          number = UnityEngine.Random.Range(0, 3);
+        } while (number == except);
+        return number;
+    }
+
 }
