@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/startMenu.unity
+    guid: 13d32a27675368f4caaad1801c671056
+  - enabled: 1
+    path: Assets/Scenes/viewRules.unity
+    guid: e7e14109be42e1b42881e682090c894b
+  - enabled: 1
+    path: Assets/Scenes/levelSelect.unity
+    guid: ec999b52ec9192e4f87dfc01de83d35e
+  - enabled: 1
+    path: Assets/Scenes/infoFretboard.unity
+    guid: c31834908fc7ac947ae74db2f993d9a9
+  - enabled: 1
+    path: Assets/Scenes/studyNotesMenu.unity
+    guid: 6782000359b5886458f333437549030c
+  - enabled: 1
+    path: Assets/Scenes/viewNotes1.unity
+    guid: ee765c6cdd58c2f45aaa7bc3a00b5bee
+  - enabled: 1
+    path: Assets/Scenes/viewNotes2.unity
+    guid: 0371c8c0bf2c04d4fad967d20dabd618
+  - enabled: 1
+    path: Assets/Scenes/viewNotes3.unity
+    guid: 8c718dfeeb77d5d459466d7f4cb3c9af
+  - enabled: 1
+    path: Assets/Scenes/viewNotes4.unity
+    guid: 524e6840af336ed4d96d85ac2a46376d
+  - enabled: 1
+    path: Assets/Scenes/viewNotes5.unity
+    guid: ded036f09cf931248bb92e3a54329ed8
+  - enabled: 1
+    path: Assets/Scenes/viewNotes6.unity
+    guid: b02a70f056f524442b3a52e07850c187
+  - enabled: 1
+    path: Assets/Scenes/playLevel1.unity
+    guid: 971af7171fb91f44dbd48a201c324e7a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  m_configObjects: {}
