@@ -3,4 +3,4 @@ For a class assignment I was tasked with creating an educational game. I was als
 An Important Note: The High Score feature does not work at the github hosted link.
 If you are familiar with unity, feel free to download the files from github and run the project via build and run on you local machine.
 
-Enjoy!
+Enjoy!!
